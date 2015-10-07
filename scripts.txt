@@ -19,11 +19,11 @@ cat reviews.Fifty-Shades.csv | cut -f 1 | sed -E 's/(-[0-9]+)-[0-9]+/\1/' | sort
 # this script shows us in which reviews certain words are used, for example 'bought'
 egrep --color "bought" reviews.Fifty-Shades.csv
 
-# this script selects the reviews that rated the book with a 4 or a 5
-cat reviews.Fifty-Shades.csv | awk -F '\t' '{if ($2 > 3) print}' | cut -f 5
+# this script selects the reviews that rated the book with a 4 or a 5 (and saves it in a txt file)
+cat reviews.Fifty-Shades.csv | awk -F '\t' '{if ($2 > 3) print}' | cut -f 5 > high_rates_comments.txt
 
-# this script selects the reviews that rated the book with a 1 or a 2
-cat reviews.Fifty-Shades.csv | awk -F '\t' '{if ($2 < 3) print}' | cut -f 5
+# this script selects the reviews that rated the book with a 1 or a 2 (and saves it in a txt file)
+cat reviews.Fifty-Shades.csv | awk -F '\t' '{if ($2 < 3) print}' | cut -f 5 > low_rates_comments.txt
 
 
 

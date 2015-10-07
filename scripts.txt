@@ -20,10 +20,10 @@ cat reviews.Fifty-Shades.csv | cut -f 1 | sed -E 's/(-[0-9]+)-[0-9]+/\1/' | sort
 egrep --color "bought" fiftyshadesreviews.csv
 
 # this script selects the reviews that rated the book with a 4 or a 5
-$ cat reviews.Fifty-Shades.csv | awk -F '\t' '{if ($2 >= 2.5) print}' | cut -f 5
+$ cat reviews.Fifty-Shades.csv | awk -F '\t' '{if ($2 > 3) print}' | cut -f 5
 
 # this script selects the reviews that rated the book with a 1 or a 2
-$ cat reviews.Fifty-Shades.csv | awk -F '\t' '{if ($2 <= 2.5) print}' | cut -f 5
+$ cat reviews.Fifty-Shades.csv | awk -F '\t' '{if ($2 < 3) print}' | cut -f 5
 
 
 

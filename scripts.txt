@@ -5,7 +5,7 @@ cat reviews.Fifty-Shades.csv | cut -f 2 | sort | uniq -c | sort -nr
 cat reviews.Fifty-Shades.csv | cut -f 2,3 | sort -g -k 2
 
 the results from the script above are a big mess so with awk I filtered out the reviews which got at least 200 votes as a helpful review
-cat reviews.Fifty-Shades.csv | cut -f 2,3 | sort -g -k 2 | awk -F '\t' '{if 	($2 >= 200) print}'
+cat reviews.Fifty-Shades.csv | cut -f 2,3 | sort -g -k 2 | awk -F '\t' '{if($2 >= 200) print}'
 
 # This script takes the rating with the year and month
 $ cat reviews.Fifty-Shades.csv | cut -f 1,2 | sed -E 's/(-[0-9]+)-[0-9]+/\1/'
@@ -14,7 +14,7 @@ $ cat reviews.Fifty-Shades.csv | cut -f 1,2 | sed -E 's/(-[0-9]+)-[0-9]+/\1/'
 cat reviews.Fifty-Shades.csv | cut -f 1,2 | sed -E 's/(-[0-9]+)-[0-9]+/\1/' | sort | uniq -c
 
 # this script shows us how many reviews were given in a month
-cat reviews.Fifty-Shades.csv | cut -f 1 | sed -E 's/(-[0-9]+)-[0-			9]+/\1/' | sort | uniq -c
+cat reviews.Fifty-Shades.csv | cut -f 1 | sed -E 's/(-[0-9]+)-[0-9]+/\1/' | sort | uniq -c
 
 # this script shows us in which reviews certain words are used, for example 'bought'
 egrep --color "bought" fiftyshadesreviews.csv

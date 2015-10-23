@@ -16,23 +16,21 @@ cat reviews.Fifty-Shades.csv | cut -f 1,2 | sed -E 's/(-[0-9]+)-[0-9]+/\1/' | so
 #script 6 - this script shows us how many reviews were given in a month
 cat reviews.Fifty-Shades.csv | cut -f 1 | sed -E 's/(-[0-9]+)-[0-9]+/\1/' | sort | uniq -c
 
-#script 7 - this script shows us in which reviews certain words are used, for example 'bought'
-grep --color "bought" reviews.Fifty-Shades.csv
-
-#script 8 - this script shows us the word bought with the 25 characters preceding the word and the 100 characters following the word. --> So this script shows us the word bought with only its surrounding words and not the whole review. 
-grep -o '.\{25\}bought.\{100\}' reviews.Fifty-Shades.csv
-
-#script 9 - this script selects the reviews that rated the book with a 4 or a 5 (and saves it in a txt file)
+#script 7 - this script selects the reviews that rated the book with a 4 or a 5 (and saves it in a txt file)
 cat reviews.Fifty-Shades.csv | awk -F '\t' '{if ($2 > 3) print}' | cut -f 5 > high_rates_comments.txt
 
-#script 10 - this script selects the reviews that rated the book with a 1 or a 2 (and saves it in a txt file)
+#script 8 - this script selects the reviews that rated the book with a 1 or a 2 (and saves it in a txt file)
 cat reviews.Fifty-Shades.csv | awk -F '\t' '{if ($2 < 3) print}' | cut -f 5 > low_rates_comments.txt
 
-#script 11 - counting the words of the comments
+#script 9 - counting the words of the comments
 tr -sc '[A-Z][a-z]' '[\012*]' < high_rates_comments.txt | sort | uniq -c | sort -n
 tr -sc '[A-Z][a-z]' '[\012*]' < low_rates_comments.txt | sort | uniq -c | sort -n
 
+#script 10 - this script shows us in which reviews certain words are used, for example 'bought'
+grep --color "bought" reviews.Fifty-Shades.csv
 
+#script 11 - this script shows us the word bought with the 25 characters preceding the word and the 100 characters following the word. --> So this script shows us the word bought with only its surrounding words and not the whole review. 
+grep -o '.\{25\}bought.\{100\}' reviews.Fifty-Shades.csv
 
 
 

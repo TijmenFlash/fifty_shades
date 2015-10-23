@@ -22,15 +22,48 @@ cat reviews.Fifty-Shades.csv | awk -F '\t' '{if ($2 > 3) print}' | cut -f 5 > hi
 #script 8 - this script selects the reviews that rated the book with a 1 or a 2 (and saves it in a txt file)
 cat reviews.Fifty-Shades.csv | awk -F '\t' '{if ($2 < 3) print}' | cut -f 5 > low_rates_comments.txt
 
-#script 9 - counting the words of the comments
+#script 9 - counting the words of the high_rates_comments.txt file and low_rates_comments.txt file
 tr -sc '[A-Z][a-z]' '[\012*]' < high_rates_comments.txt | sort | uniq -c | sort -n
 tr -sc '[A-Z][a-z]' '[\012*]' < low_rates_comments.txt | sort | uniq -c | sort -n
 
 #script 10 - this script shows us in which reviews certain words are used, for example 'bought'
 grep --color "bought" reviews.Fifty-Shades.csv
 
-#script 11 - this script shows us the word bought with the 25 characters preceding the word and the 100 characters following the word. --> So this script shows us the word bought with only its surrounding words and not the whole review. 
-grep -o '.\{25\}bought.\{100\}' reviews.Fifty-Shades.csv
+#script 11 - this script shows us the word bought with the 50 characters preceding the word and the 80 characters following the word. --> So this script shows us the word bought with only its surrounding words and not the whole review. 
+grep -o '.\{50\}bought.\{80\}' reviews.Fifty-Shades.csv
+
+#script 12 - shows 'started reading' with surrounding words
+$ grep -o '.\{50\}started reading.\{80\}' reviews.Fifty-Shades.csv
+
+#script 13 - shows 'read' with surrounding words
+$ grep -o '.\{50\}read.\{80\}' reviews.Fifty-Shades.csv
+
+#script 14 - shows 'read this because' with surrounding words
+$ grep -o '.\{50\}read this because.\{80\}' reviews.Fifty-Shades.csv
+
+#script 15 - shows 'picked up' with surrounding words
+$ grep -o '.\{50\}picked up.\{80\}' reviews.Fifty-Shades.csv
+
+#script 16 - shows 'hype' with surrounding words
+$ grep -o '.\{50\}hype.\{80\}' reviews.Fifty-Shades.csv
+
+#script 17 - shows 'buzz' with surrounding words
+$ grep -o '.\{50\}buzz.\{80\}' reviews.Fifty-Shades.csv
+
+#script 18 - shows 'popularity' with surrounding words
+$ grep -o '.\{50\}popularity.\{80\}' reviews.Fifty-Shades.csv
+
+#script 19 - shows 'hoopla' with surrounding words
+$ grep -o '.\{50\}hoopla.\{80\}' reviews.Fifty-Shades.csv
+
+#script 20 - shows 'sex' with surrounding words
+grep -o '.\{50\) sex..\{80\}' reviews.Fifty-Shades.csv
+
+#script 21 - shows 'you have been warned' with surrounding words
+grep -o '.\{50\}you have been warned.\{80\}' reviews.Fifty-Shades.csv
+
+
+
 
 
 

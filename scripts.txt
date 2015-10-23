@@ -28,6 +28,9 @@ cat reviews.Fifty-Shades.csv | awk -F '\t' '{if ($2 > 3) print}' | cut -f 5 > hi
 #script 10 - this script selects the reviews that rated the book with a 1 or a 2 (and saves it in a txt file)
 cat reviews.Fifty-Shades.csv | awk -F '\t' '{if ($2 < 3) print}' | cut -f 5 > low_rates_comments.txt
 
+#script 11 - counting the words of the comments
+tr -sc '[A-Z][a-z]' '[\012*]' < high_rates_comments.txt | sort | uniq -c | sort -n
+tr -sc '[A-Z][a-z]' '[\012*]' < low_rates_comments.txt | sort | uniq -c | sort -n
 
 
 
